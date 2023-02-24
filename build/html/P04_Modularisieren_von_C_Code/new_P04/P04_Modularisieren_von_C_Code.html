@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>04 - Modularisieren von C Code &#8212; SNP Labs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="05 - Arrays/Strings/TicTacToe" href="../../P05_TicTacToe/README.html" />
+    <link rel="prev" title="03 - Bit Operationen, Struct, Typedef" href="../../P03_Bit_Operation_struct_typedef/README.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="modularisieren-von-c-code">
+<h1>04 - Modularisieren von C Code<a class="headerlink" href="#modularisieren-von-c-code" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<section id="ubersicht">
+<h2>1. Übersicht<a class="headerlink" href="#ubersicht" title="Permalink to this headline">¶</a></h2>
+<p>In diesem Praktikum wird eine kleine Sammlung von Funktionen als Modul erstellt.</p>
+<p>In der ersten Aufgabe schreiben Sie zu einem bestehenden C Programm die notwendigen Header Files plus passen das Makefile so an, dass die entsprechenden Module mit kompiliert werden.</p>
+<p>In der zweiten Aufgabe erstellen Sie Makefile Regeln um aus Konfigurationsdateien graphischen Darstellungen zu erzeugen.</p>
+</section>
+<hr class="docutils" />
+<section id="lernziele">
+<h2>2. Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">¶</a></h2>
+<p>In diesem Praktikum lernen Sie die Handgriffe um ein Programm zu modularisieren, d.h. in mehrere Module aufzuteilen.</p>
+<ul class="simple">
+<li><p>Sie wissen, dass ein Modul aus einem C-File und einem passenden H-File bestehen.</p></li>
+<li><p>Sie können Header Files korrekt strukturieren.</p></li>
+<li><p>Sie wissen wie <strong>Include Guards</strong> anzuwenden sind.</p></li>
+<li><p>Sie können Module im <strong>Makefile</strong> zur Kompilation hinzufügen.</p></li>
+<li><p>Sie können anhand einer Beschreibung Typen und Funktionen in den passenden Header Files deklarieren.</p></li>
+<li><p>Sie können <strong>Makefile</strong> Regeln schreiben.</p></li>
+</ul>
+<p>Die Bewertung dieses Praktikums ist am Ende angegeben.</p>
+<p>Erweitern Sie die vorgegebenen Code Gerüste, welche im <strong>git</strong> Repository <strong>snp-lab-code</strong> verfügbar sind.</p>
+</section>
+<hr class="docutils" />
+<section id="aufgabe-1-modularisieren">
+<h2>3. Aufgabe 1: Modularisieren<a class="headerlink" href="#aufgabe-1-modularisieren" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../../_images/P04_Aufgabenstellung.png" /></p>
+<section id="teilaufgabe-modules-einbinden-header-files-schreiben">
+<h3>3.1 Teilaufgabe Modules einbinden, Header Files schreiben<a class="headerlink" href="#teilaufgabe-modules-einbinden-header-files-schreiben" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>src/objects.h</p>
+<ul>
+<li><p>2 Datenstukturen definieren</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">point</span></code> mit 2 double für x und y Koordinate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">line</span></code> mit 2 point</p></li>
+</ul>
+</li>
+<li><p>src/functions.h und .c</p>
+<ul>
+<li><p>2 Funktionen deklarieren und definieren</p></li>
+<li><p>Berechnung der Länge <code class="docutils literal notranslate"><span class="pre">get_length</span></code>einer Linie (Annahme: Koordinaten sind alle positiv)</p>
+<ul>
+<li><p>l = sqrt(h^ 2 + b^ 2)</p></li>
+<li><p>ev. muss hier in den Anhang <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;math.h&gt;</span></code></p></li>
+</ul>
+</li>
+<li><p>Berechnung der Steigung <code class="docutils literal notranslate"><span class="pre">get_slope</span></code> der Linie gegenüber dem Koordinatensystem</p>
+<ul>
+<li><p>m = h / b</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>tests vorgeben</p></li>
+<li><p>src/objects.h</p>
+<ul>
+<li><p>Include Guard</p></li>
+<li><p>Includes</p></li>
+<li><p>Struct für Punkt und Linie</p></li>
+<li><p>Include Guard</p></li>
+</ul>
+</li>
+<li><p>src/functions.h</p>
+<ul>
+<li><p>Include Guard</p></li>
+<li><p>Includes</p></li>
+<li><p>Deklarationen der Funktionen für Berechnung der Länge und Steigung</p></li>
+<li><p>Include Guard</p></li>
+</ul>
+</li>
+<li><p>src/functions.c</p>
+<ul>
+<li><p>Includes</p></li>
+<li><p>Definitionen der Funktionen für Berechnung der Länge und Steigung</p></li>
+<li><p>Include Guard</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="aufgabe-2-makefile-regeln">
+<h2>4. Aufgabe 2: Makefile Regeln<a class="headerlink" href="#aufgabe-2-makefile-regeln" title="Permalink to this headline">¶</a></h2>
+<p>Makefile ergänzen, damit Modul <code class="docutils literal notranslate"><span class="pre">functions</span></code> korrekt eingebunden und kompiliert wird.</p>
+<ol class="arabic simple">
+<li><p>Kompilieren Sie das ganze mittels <strong>make clean default</strong>. Es sollten keine Compiler Fehler auftreten.</p></li>
+</ol>
+<section id="neue-regeln-hinzufugen">
+<h3>4.1 Neue Regeln hinzufügen<a class="headerlink" href="#neue-regeln-hinzufugen" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Vorraussetzung: tab2svg.sh aus Praktikum 3 wird um die Möglichkeit erweitert eine Linie zu zeichnen (<code class="docutils literal notranslate"><span class="pre">line:x1:y1:x2:y2:color</span></code>)</p></li>
+<li><p>Studierende erstellen</p>
+<ul>
+<li><p>mind. 2 Files <code class="docutils literal notranslate"><span class="pre">long.line</span></code> und <code class="docutils literal notranslate"><span class="pre">short.line</span></code> mit 2 unterschiedlichen Linien</p></li>
+<li><p>Makefile Regeln um aus einem File <code class="docutils literal notranslate"><span class="pre">.line</span></code> ein File <code class="docutils literal notranslate"><span class="pre">.svg</span></code> mit Hilfe des Scripts zu erstellen</p></li>
+<li><p>PHONY Regel <code class="docutils literal notranslate"><span class="pre">display</span></code> um beide <code class="docutils literal notranslate"><span class="pre">.svg</span></code> mit Firefox darzustellen</p>
+<ul>
+<li><p>Vorgabe: sie sollen eine Variable für die Input-Dateien nutzen</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Nachdem das Programm in Aufgabe 1 umgesetzt ist, geht es nun darum, im <strong>Makefile</strong> Regeln zu definieren welche die einzelnen Schritte von den Source Files zu den <strong>png</strong> Files ausführen.</p>
+<p>Prüfen Sie schliesslich die Umsetzung mittels <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">display</span></code>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="aufgabe-3">
+<h2>5. Aufgabe 3<a class="headerlink" href="#aufgabe-3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Studierende sollen Ausgabe von <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">doc</span></code> analysieren und die Include Diagramme erklären können</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">doc</span>
+<span class="n">firefox</span> <span class="n">doc</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="bewertung">
+<h2>6. Bewertung<a class="headerlink" href="#bewertung" title="Permalink to this headline">¶</a></h2>
+<p>Die gegebenenfalls gestellten Theorieaufgaben und der funktionierende Programmcode müssen der Praktikumsbetreuung gezeigt werden. Die Lösungen müssen mündlich erklärt werden.</p>
+</section>
+<hr class="docutils" />
+<section id="erweiterung-doxyfile-fur-abhangigkeitsanalyse">
+<h2>7. Erweiterung Doxyfile für Abhängigkeitsanalyse<a class="headerlink" href="#erweiterung-doxyfile-fur-abhangigkeitsanalyse" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="n">huno</span><span class="o">/</span><span class="n">snp</span><span class="o">-</span><span class="n">new</span><span class="o">/</span><span class="n">snp</span><span class="o">/</span><span class="n">praktika</span><span class="o">/</span><span class="n">Shared</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">Doxyfile</span>	<span class="mi">2022</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">07</span> <span class="mi">21</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mf">42.343302707</span> <span class="o">+</span><span class="mi">0100</span>
+<span class="o">+++</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="n">snp</span><span class="o">/</span><span class="n">Doxyfile</span>	<span class="mi">2022</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">07</span> <span class="mi">22</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">36.266839126</span> <span class="o">+</span><span class="mi">0100</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">297</span><span class="p">,</span><span class="mi">14</span> <span class="o">+</span><span class="mi">297</span><span class="p">,</span><span class="mi">14</span> <span class="o">@@</span>
+ <span class="n">UML_LOOK</span>               <span class="o">=</span> <span class="n">NO</span>
+ <span class="n">UML_LIMIT_NUM_FIELDS</span>   <span class="o">=</span> <span class="mi">10</span>
+ <span class="n">TEMPLATE_RELATIONS</span>     <span class="o">=</span> <span class="n">NO</span>
+<span class="o">-</span><span class="n">INCLUDE_GRAPH</span>          <span class="o">=</span> <span class="n">NO</span>
+<span class="o">-</span><span class="n">INCLUDED_BY_GRAPH</span>      <span class="o">=</span> <span class="n">NO</span>
+<span class="o">+</span><span class="n">INCLUDE_GRAPH</span>          <span class="o">=</span> <span class="n">YES</span>
+<span class="o">+</span><span class="n">INCLUDED_BY_GRAPH</span>      <span class="o">=</span> <span class="n">YES</span>
+ <span class="n">CALL_GRAPH</span>             <span class="o">=</span> <span class="n">NO</span>
+ <span class="n">CALLER_GRAPH</span>           <span class="o">=</span> <span class="n">NO</span>
+<span class="o">-</span><span class="n">GRAPHICAL_HIERARCHY</span>    <span class="o">=</span> <span class="n">NO</span>
+<span class="o">-</span><span class="n">DIRECTORY_GRAPH</span>        <span class="o">=</span> <span class="n">NO</span>
+<span class="o">+</span><span class="n">GRAPHICAL_HIERARCHY</span>    <span class="o">=</span> <span class="n">YES</span>
+<span class="o">+</span><span class="n">DIRECTORY_GRAPH</span>        <span class="o">=</span> <span class="n">YES</span>
+ <span class="n">DOT_IMAGE_FORMAT</span>       <span class="o">=</span> <span class="n">png</span>
+<span class="o">-</span><span class="n">INTERACTIVE_SVG</span>        <span class="o">=</span> <span class="n">NO</span>
+<span class="o">+</span><span class="n">INTERACTIVE_SVG</span>        <span class="o">=</span> <span class="n">YES</span>
+ <span class="n">DOT_PATH</span>               <span class="o">=</span>
+ <span class="n">DOTFILE_DIRS</span>           <span class="o">=</span>
+ <span class="n">MSCFILE_DIRS</span>           <span class="o">=</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">SNP Labs</h1>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../P01_Erste_Schritte_mit_C/README.html">01 - Erste Schritte mit C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../P02_Funktionen_Datentyp_enum/README.html">02:  Funktionen, Datentyp “enum”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../P03_Bit_Operation_struct_typedef/README.html">03 - Bit Operationen, Struct, Typedef</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">04 - Modularisieren von C Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ubersicht">1. Übersicht</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lernziele">2. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aufgabe-1-modularisieren">3. Aufgabe 1: Modularisieren</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#teilaufgabe-modules-einbinden-header-files-schreiben">3.1 Teilaufgabe Modules einbinden, Header Files schreiben</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#aufgabe-2-makefile-regeln">4. Aufgabe 2: Makefile Regeln</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#neue-regeln-hinzufugen">4.1 Neue Regeln hinzufügen</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#aufgabe-3">5. Aufgabe 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bewertung">6. Bewertung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#erweiterung-doxyfile-fur-abhangigkeitsanalyse">7. Erweiterung Doxyfile für Abhängigkeitsanalyse</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../P05_TicTacToe/README.html">05 - Arrays/Strings/TicTacToe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../P06_Personen_Verwaltung_Linked_List/README.html">06 - Personen Verwaltung – Linked List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../P07_Prozesse_und_Threads/README.html">07 - Prozesse und Threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../P08_Sync/README.html">08 - Synchronisationsprobleme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../P09_File_Operations/README.html">09 - File Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../P10_IPC/README.html">10 - IPC</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../../P03_Bit_Operation_struct_typedef/README.html" title="previous chapter">03 - Bit Operationen, Struct, Typedef</a></li>
+      <li>Next: <a href="../../P05_TicTacToe/README.html" title="next chapter">05 - Arrays/Strings/TicTacToe</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, stsh.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
