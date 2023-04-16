@@ -11,6 +11,24 @@
  * @file
  * @brief Lab implementation
  */
-// begin students to add code for task 4.2
+#include <stdio.h>
+#include <stdlib.h>
 
-// end students to add code
+#include "file_io.h"
+#include "person.h"
+#include "list.h"
+
+
+/**
+ * @brief Main entry point.
+ * @param[in] argc  The size of the argv array.
+ * @param[in] argv  The command line arguments...
+ * @returns Returns EXIT_SUCCESS (=0) on success, EXIT_FAILURE (=1) there is an expression syntax error.
+ */
+int main(int argc, char* argv[])
+{
+	// BEGIN-STUDENTS-TO-ADD-CODE
+
+	// END-STUDENTS-TO-ADD-CODE
+    return EXIT_SUCCESS;
+}

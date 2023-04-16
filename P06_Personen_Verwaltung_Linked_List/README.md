@@ -183,7 +183,7 @@ int person_compare(const person_t *a, const person_t *b);
 
 Typ Definitionen:
 ```C
-person_t... // siehe Beschreibung oben
+node_t... // siehe Beschreibung oben
 ```
 
 Funktionsdeklarationen:

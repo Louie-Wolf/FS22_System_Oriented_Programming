@@ -13,21 +13,28 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include "read.h"
-#include "rectang.h"
 
-/// max side length
-#define MAX_NUMBER 1000
+#include "file_io.h"
+#include "person.h"
+#include "list.h"
 
+void perror_and_exit(const char *context) { perror(context); exit(EXIT_FAILURE); } // das muss noch an einen anderen Ort, scia
 
-/**
- * @brief Main entry point.
- * @returns Returns EXIT_SUCCESS (=0) on success, EXIT_FAILURE (=1) on failure.
- */
-int main(void)
+// May divide your code in further functions
+// BEGIN-STUDENTS-TO-ADD-CODE
+
+// END-STUDENTS-TO-ADD-CODE
+
+void store_person_list(void)
 {
-	// begin students to add code for task 4.1
-	
-	// end students to add code
-    return EXIT_SUCCESS;
+	// BEGIN-STUDENTS-TO-ADD-CODE
+
+	// END-STUDENTS-TO-ADD-CODE
+}
+
+void load_person_list(void)
+{
+	// BEGIN-STUDENTS-TO-ADD-CODE
+
+	// END-STUDENTS-TO-ADD-CODE
 }
