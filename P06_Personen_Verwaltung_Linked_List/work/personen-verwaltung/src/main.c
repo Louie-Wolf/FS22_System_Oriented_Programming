@@ -56,33 +56,31 @@ int main(int argc, char* argv[])
 		switch(action){
 		    case INSERT:
 		    {
-				person_t *person = malloc(sizeof(person_t));
+				person_t person;
 
 				print_title(insert_title);
-				scan_person(person);
-				if(list_find(person) > -1){
+				scan_person(&person);
+				if(list_find(&person) > -1){
 				    (void) printf("Person already exists in list.\n");
-				    free(person);
 				} else {
-					list_insert(person);
-					print_person(person);
+					list_insert(&person);
+					print_person(&person);
 					(void) printf(" was added to list.\n");
 				}
 				break;
 			}
 			case REMOVE: 
 			{
-				person_t *person = malloc(sizeof(person_t));
+				person_t person;
 
 				print_title(remove_title);
-				scan_person(person);
-				if(list_find(person) < 0){
+				scan_person(&person);
+				if(list_find(&person) < 0){
 				    (void) printf("No such entry exists in list.\n");
-				    free(person);
 				}
 				else {
-					list_remove(person);
-					print_person(person);
+					list_remove(&person);
+					print_person(&person);
 					(void) printf(" was removed from list.\n");
 				}
 				break;

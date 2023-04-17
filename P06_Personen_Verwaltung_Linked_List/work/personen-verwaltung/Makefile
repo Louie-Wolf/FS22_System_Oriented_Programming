@@ -1,4 +1,4 @@
-SNP_SHARED_MAKEFILE := $(if $(SNP_SHARED_MAKEFILE),$(SNP_SHARED_MAKEFILE),~/snp/shared.mk)
+SNP_SHARED_MAKEFILE := ~/snp/FS22_System_Oriented_Programming/shared.mk
 
 TARGET     := bin/personen-verwaltung
 # BEGIN-STUDENTS-TO-ADD-CODE
