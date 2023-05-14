@@ -1,41 +1,9 @@
 # 04 - Modularisieren von C Code
 
-```{eval-rst}
-.. figure:: zhaw_neg_P2945.jpg
-  :width: 100px
-  :name: logo
-  :align: right
-```
+![](./modularisieren_von_c_code.JPG)
 
 ___
 
-```{eval-rst}
-.. figure:: modularisieren_von_c_code.JPG
-  :width: 500px
-  :name: logo
-  :align: center
-```
-
-
-___
-
-## Inhalt
-
-{ref}`04_introduction`
-
-{ref}`04_learning_objectives`
-
-{ref}`04_task_01`
-
-{ref}`04_task_02`
-
-{ref}`04_grading`
-
-{ref}`04_appendix`
-
-___
-
-(04_introduction)=
 ## 1. Übersicht 
 
 In diesem Praktikum üben Sie modulare Programmierung indem Sie ein
@@ -48,18 +16,13 @@ In der zweiten Aufgabe erstellen Sie Makefile Regeln für die drei
 Schritte von den C Source Files zur graphischen Darstellung der
 Abhängigkeiten.
 
-```{eval-rst}
-.. figure:: uebersicht.png
-  :width: 500px
-  :name: uebersicht
-  :align: center
-```
+
+![](./uebersicht.png)
 
 
 Im Anhang ist eine Übersicht über die verwendeten File Formate gegeben.
 
 
-(04_learning_objectives)=
 ## 2. Lernziele 
 
 In diesem Praktikum lernen Sie die Handgriffe um ein Programm zu modularisieren, d.h. in mehrere Module aufzuteilen.
@@ -79,7 +42,6 @@ Erweitern Sie die vorgegebenen Code Gerüste, welche im `git`
 Repository `snp-lab-code` verfügbar sind.
 
 
-(04_task_01)=
 ## 3. Aufgabe 1: Modularisieren 
 Das zu ergänzende Programm dep2dot hat folgende Funktionalität:
 
@@ -240,7 +202,6 @@ System.out.println(
 </td><td></td></tr>
 </table>
 
-(04_task_02)=
 ## 4. Aufgabe 2: Makefile Regeln
 
 Die folgenden drei Schritte erstellen von einem C Source File eine
@@ -253,12 +214,9 @@ graphische Darstellung der Abhängigkeiten:
 Sie sollen für die Compiler-ähnlichen Programme `dep2dot` und `dot`
 Makefile Regeln schreiben.
 
-```{eval-rst}
-.. figure:: uebersicht.png
-  :width: 500px
-  :name: uebersicht
-  :align: center
-```
+
+![](./uebersicht.png)
+
 
 
 Das Programm `dep2dot` hat folgende Funktionalität:
@@ -294,12 +252,8 @@ firefox dep.png
 Als Resultat sollte Firefox folgende Graphik darstellen:
 
 
-```{eval-rst}
-.. figure:: dep_dot.png
-  :width: 150px
-  :name: dep_dot
-  :align: center
-```
+![](./dep_dot.png)
+
 
 
 
@@ -308,10 +262,10 @@ den Source Files zu den `png` Files ausführen.
 
 
 Prüfen Sie schliesslich die Umsetzung Aufgabe mittels `make dep-clean
-dep && firefox src/*.png.`
+dep && firefox ./src/*.png`
 
 
-### 4.1	Neue Regeln hinzufügen
+### 4.1 Neue Regeln hinzufügen
 
 
 Führen Sie im `Makefile` an den angegebenen Stellen folgende
@@ -336,15 +290,18 @@ Ergänzungen durch
 
 Die Umsetzung der obigen Änderungen sind erfolgreich, wenn Sie
 folgende Shell Command Line erfolgreich ausführen können und in
-Firefox die Abhängigkeiten der C-Files von den Inclu-de Files
+Firefox die Abhängigkeiten der C-Files von den Include Files
 dargestellt wird.
 
-`make dep-clean dep && firefox src/*.png.`
+`make dep-clean dep && firefox ./src/*.png`
 
 
+### 4.2 Resultate analysieren und erklären
 
+* Analysieren Sie die in der vorherigen Aufgabe erstellten grafischen Darstellungen.
+* Erklären Sie was dargestellt wird und stellen Sie den Bezug zum zugehörigen C-Code her.
 
-(04_grading)=
+___
 ## 5. Bewertung 
 
 Die gegebenenfalls gestellten Theorieaufgaben und der funktionierende Programmcode müssen der Praktikumsbetreuung gezeigt werden. Die Lösungen müssen mündlich erklärt werden.
@@ -357,40 +314,23 @@ Die gegebenenfalls gestellten Theorieaufgaben und der funktionierende Programmco
 | 2 | Neue Regeln hinzufügen | 2 |
 
 
+___
 
-
-(04_appendix)=
 ## 6. Anhang 
-
-
-
 
 ### 6.1	Verwendete zusätzliche Sprach Elemente
 
-<table><tr><td>
 
 **Sprach Element**
-
-</td><td>
-
-**Beschreibung**
-
-</td></tr>
-<tr><td>
-
-
 
 ```C
 fprintf(stderr, "v=%d", v)
 ```
 
-</td><td>
+**Beschreibung**
 
 Formatierte Ausgabe auf den Standard Error Stream. Siehe ***man 3
 stderr*** und ***man 3 fprintf***.
-
-</td></tr>
-</table>
 
 
 ### 6.2	Verarbeitung und verwendete File Formate <a name="file_formats"></a>
@@ -490,7 +430,7 @@ Es gibt als Teil dieses Tool-Sets verschiedene Übersetzer. Der hier
 verwendete ist der Basis-übersetzer: `dot`.
 
 Das `dot`-File Format kennt viele Möglichkeiten die Knoten und Kanten
-eines Graphen und de-ren Anordnung anzugeben.
+eines Graphen und deren Anordnung anzugeben.
 
 Der Vorteil eines solchen Tool-Sets ist, dass man den Inhalt (den
 Graphen) einfach definieren kann und sich nicht um das komplexe
@@ -511,7 +451,7 @@ digraph G {
    }
 
    subgraph cluster_c1 {
-      label="others"; style=filled; col-or=lightgrey;
+      label="others"; style=filled; color=lightgrey;
       { B; C; rank=same; }
    }
 
@@ -521,6 +461,8 @@ digraph G {
 }
 ```
 
+![](./bsp_dot.png)
+
 
 #### 6.2.3	png File
 
@@ -529,4 +471,4 @@ Format. Es wird oft in Web Pages verwendet.
 
 
 ___
-Version: 15.02.2022
+Version: 22.02.2022

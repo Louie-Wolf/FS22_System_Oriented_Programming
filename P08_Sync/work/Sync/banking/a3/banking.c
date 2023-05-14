@@ -13,6 +13,7 @@
 
 #include "banking.h"
 
+
 //******************************************************************************
 
 typedef struct account_struct_ {
@@ -74,8 +75,21 @@ void deposit(int branchNr, int accountNr, long int value) {
 }
 
 void transfer(int fromB, int toB, int accountNr, long int value) {
+    if (fromB == toB) {
+        return;
+    }
+    
+    int first = ( toB < fromB) ? toB : fromB;
+    int second = ( fromB > toB) ? fromB : toB;
+    
+    pthread_mutex_lock(&bank[first].accounts[accountNr].acntLock);
+    pthread_mutex_lock(&bank[second].accounts[accountNr].acntLock);
+    
     int money = withdraw(fromB, accountNr, value);
     deposit(toB, accountNr, money);
+    
+    pthread_mutex_unlock(&bank[second].accounts[accountNr].acntLock);
+    pthread_mutex_unlock(&bank[first].accounts[accountNr].acntLock);
 }
 
 void checkAssets(void) {

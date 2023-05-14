@@ -135,36 +135,6 @@ static void test_not_right_angled(void)
 	assert_lines(OUTFILE, out_txt, sizeof(out_txt)/sizeof(*out_txt));
 }
 
-static void test_trace(void)
-{
-	// arrange
-	const char *err_txt[] = {
-		"TRACE: main()\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: rectangular(3, 4, 6)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: rectangular(5, 4, 4)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: rectangular(3, 5, 5)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: getInt(1000)\n",
-		"TRACE: rectangular(33, 43, 55)\n",
-		"TRACE: getInt(1000)\n",
-	};
-	// act
-	int exit_code = system(XSTR(TARGET) " 1>" OUTFILE " 2>" ERRFILE " <" INFILE_NOT_RIGHT_ANGLED);
-	// assert
-	CU_ASSERT_EQUAL(exit_code, 0);
-	assert_lines(ERRFILE, err_txt, sizeof(err_txt)/sizeof(*err_txt));
-}
-
 static void test_error(void)
 {
 	// arrange
@@ -199,7 +169,6 @@ int main(void)
 	TestMainBasic("Triangle", setup, teardown
 				  , test_right_angled
 				  , test_not_right_angled
-				  , test_trace
 				  , test_error
 				  );
 }

@@ -14,7 +14,7 @@
 
 //******************************************************************************
 
-#define CUSTOMERS   4   // number of customers to be started
+#define CUSTOMERS   10   // number of customers to be started
 
 //******************************************************************************
 // common data 

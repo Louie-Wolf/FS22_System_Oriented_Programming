@@ -75,6 +75,7 @@ ___
 **Ziele**
 * An einem Beispiel die Funktion `execl()` kennenlernen.
 * Verstehen, wie nach `fork()` ein neues Programm gestartet wird.
+
 **Aufgaben**
 1. Studieren Sie zuerst die Programme `ProcA2.c` und `ChildProcA2.c`.
 2. Starten Sie `ProcA2.e` und vergleichen Sie die Ausgabe mit der Ausgabe unter Aufgabe 1. Diskutieren und erklären Sie was gleich ist und was anders.

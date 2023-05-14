@@ -15,7 +15,6 @@
 #include <stdlib.h>
 #include "read.h"
 #include "rectang.h"
-#include "trace.h"
 
 /// max side length
 #define MAX_NUMBER 1000
